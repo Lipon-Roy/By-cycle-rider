@@ -17,6 +17,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // routing setup
+app.get("/", (req, res) => {
+    res.send("Hello Cycle Rider");
+});
 app.use('/cycle', cycleRouter);
 
 // 404 not found handler
