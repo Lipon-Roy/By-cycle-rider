@@ -22,7 +22,9 @@ app.use(express.urlencoded({ extended: true }));
 
 // routing setup
 app.get("/", (req, res) => {
-    res.send("Hello Cycle Rider");
+    res.status(200).json({
+        message: 'Hello By cycle rider'
+    });
 });
 app.use('/cycle', cycleRouter);
 
