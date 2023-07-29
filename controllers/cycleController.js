@@ -1,6 +1,18 @@
 const calculator = require("../utilities/calculator");
+const createError = require('http-errors');
+const Cycle = require('../models/Cycle');
 
-const cycleController = (req, res, next) => {
+const getCycle = async (req, res, next) => {
+    try {
+        const posi = req.body.position;
+        const cycles = await Cycle.find({position: posi});
+        res.status(200).json({cycles});
+    } catch(err) {
+        next(createError(err.message));
+    }
+}
+
+const addCycle = (req, res, next) => {
     const lat = Number(req.body.latitude);
     const lon = Number(req.body.longitude);
 
@@ -11,4 +23,7 @@ const cycleController = (req, res, next) => {
     })
 }
 
-module.exports = cycleController
+module.exports = {
+    addCycle,
+    getCycle,
+}

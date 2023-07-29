@@ -2,6 +2,7 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const mongoose = require('mongoose');
 
 // internal imports
 const { notFoundHandler, errorHandler } = require('./middlewares/common/errorHandler');
@@ -11,6 +12,9 @@ const app = express();
 dotenv.config();
 
 // database connection
+mongoose.connect(process.env.DB_URL_STRING)
+    .then(() => console.log('Database connection successfull'))
+    .catch(err => console.log(err));
 
 // request parser
 app.use(express.json());
