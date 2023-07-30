@@ -3,7 +3,7 @@ const { addCycle, getCycle } = require('../controllers/cycleController');
 
 const router = express.Router();
 
-router.get('/', getCycle);
+router.post('/search', getCycle);
 
 router.post('/', addCycle);
 
