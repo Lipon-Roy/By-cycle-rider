@@ -85,7 +85,7 @@ const contact = async (req, res, next) => {
         }
         res.status(200).json({ msg: 'going well' });
     } catch (err) {
-        next(createError(err.message));
+        next(createError(err.message + " for testting"));
     }
 }
 
