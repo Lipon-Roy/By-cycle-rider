@@ -14,8 +14,20 @@ const cycleSchema = mongoose.Schema(
         },
         position: {
             type: String,
-            enum: ['science', 'bba', 'second', 'undefined'],
+            enum: ['science', 'bba', 'first', 'second', 'undefined'],
             default: 'undefined'
+        },
+        available: {
+            type: Boolean,
+            default: true,
+        },
+        bookAt: {
+            type: Date,
+            default: Date.now
+        },
+        availableAt: {
+            type: Date,
+            default: Date.now,
         }
     }
 );

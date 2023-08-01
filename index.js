@@ -2,6 +2,7 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 
 // internal imports
@@ -10,6 +11,7 @@ const cycleRouter = require('./routers/cycleRouter');
 
 const app = express();
 dotenv.config();
+app.use(cors());
 
 // database connection
 mongoose.connect(process.env.DB_URL_STRING)
@@ -20,12 +22,15 @@ mongoose.connect(process.env.DB_URL_STRING)
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use(cookieParser(process.env.COOKIE_SECRET));
+
 // routing setup
 app.get("/", (req, res) => {
     res.status(200).json({
         message: 'Hello By cycle rider'
     });
 });
+
 app.use('/cycle', cycleRouter);
 
 // 404 not found handler

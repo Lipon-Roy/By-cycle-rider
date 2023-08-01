@@ -11,7 +11,7 @@ const errorHandler = (err, req, res, next) => {
 
     res.status(err.status || 500);
 
-    res.json(errors);
+    res.json({errors});
 }
 
 module.exports = { notFoundHandler, errorHandler }
