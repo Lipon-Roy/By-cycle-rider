@@ -4,7 +4,7 @@ const { addUserValidators, addUserValidationHandler } = require('../middlewares/
 
 const router = express.Router();
 
-router.get('/user', getUser);
+router.get('/', getUser);
 
 // signup user
 router.post('/signup', addUserValidators, addUserValidationHandler, signup);
