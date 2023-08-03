@@ -1,11 +1,12 @@
 const express = require('express');
 const { contact, getCycle, booking } = require('../controllers/cycleController');
+const checkLogin = require('../middlewares/common/checkLogin');
 
 const router = express.Router();
 
-router.post('/search', getCycle);
+router.post('/search', checkLogin, getCycle);
 
-router.post('/booking', booking);
+router.post('/booking', checkLogin, booking);
 
 router.post('/contact', contact);
 

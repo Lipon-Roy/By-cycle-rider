@@ -9,6 +9,7 @@ const mongoose = require('mongoose');
 const { notFoundHandler, errorHandler } = require('./middlewares/common/errorHandler');
 const cycleRouter = require('./routers/cycleRouter');
 const userRouter = require('./routers/userRouter');
+const loginRouter = require('./routers/loginRouter');
 
 const app = express();
 dotenv.config();
@@ -34,6 +35,7 @@ app.get("/", (req, res) => {
 
 app.use('/cycle', cycleRouter);
 app.use('/user', userRouter);
+app.use('/login', loginRouter);
 
 // 404 not found handler
 app.use(notFoundHandler)
