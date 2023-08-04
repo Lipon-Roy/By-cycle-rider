@@ -1,11 +1,11 @@
 const jwt = require('jsonwebtoken');
 
 const checkLogin = (req, res, next) => {
-    let token = req.headers.token ? req.headers.token : null;
+    let { token } = req.headers;
 
     if (token) {
         try {
-            const token = token.split(' ')[1];
+            token = token.split(' ')[1];
             const decode = jwt.verify(token, process.env.JWT_SECRET);
             next();
         } catch(err) {
