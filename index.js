@@ -13,7 +13,7 @@ const loginRouter = require('./routers/loginRouter');
 
 const app = express();
 dotenv.config();
-app.use(cors());
+app.use(cors({origin: 'http://localhost:5173'}));
 
 // database connection
 mongoose.connect(process.env.DB_URL_STRING)
