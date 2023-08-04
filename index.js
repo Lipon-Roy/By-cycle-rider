@@ -12,8 +12,8 @@ const userRouter = require('./routers/userRouter');
 const loginRouter = require('./routers/loginRouter');
 
 const app = express();
+app.use(cors());
 dotenv.config();
-app.use(cors({origin: 'http://localhost:5173'}));
 
 // database connection
 mongoose.connect(process.env.DB_URL_STRING)
