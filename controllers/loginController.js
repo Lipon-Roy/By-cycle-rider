@@ -23,13 +23,7 @@ const login = async (req, res, next) => {
                     expiresIn: 60*60*1000
                 });
 
-                res.cookie(process.env.COOKIE_NAME, token, {
-                    maxAge: 60*60*1000,
-                    httpOnly: false,
-                    signed: true,
-                });
-
-                res.status(200).json('User successfully login');
+                res.status(200).json({token});
             } else {
                 throw createError('Login failed, please try again latter');
             }
