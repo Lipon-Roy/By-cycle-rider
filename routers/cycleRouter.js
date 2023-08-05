@@ -1,8 +1,10 @@
 const express = require('express');
-const { contact, getCycle, booking } = require('../controllers/cycleController');
+const { contact, getCycle, booking, getSingleCycle } = require('../controllers/cycleController');
 const checkLogin = require('../middlewares/common/checkLogin');
 
 const router = express.Router();
+
+router.get('/:id', checkLogin, getSingleCycle);
 
 router.post('/search', checkLogin, getCycle);
 

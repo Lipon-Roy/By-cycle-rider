@@ -4,6 +4,22 @@ const jwt = require('jsonwebtoken');
 const Cycle = require('../models/Cycle');
 
 //all cycles are expired at october 30/ata abar mone thakbe na tai likhe rakhlam/
+const getSingleCycle = async (req, res, next) => {
+    try {
+        const cycle = await Cycle.findOne({
+            _id: req.params.id
+        }).select({
+            name: 1,
+            price: 1
+        });
+
+        res.status(200).json({ cycle });
+    } catch(err) {
+        res.status(500).json({
+            msg: createError(err.message),
+        });
+    }
+}
 
 const getCycle = async (req, res, next) => {
     try {
@@ -92,6 +108,7 @@ const contact = async (req, res, next) => {
 module.exports = {
     contact,
     getCycle,
+    getSingleCycle,
     booking,
 }
 
